@@ -99,15 +99,15 @@ publishing {
             pom {
                 name = 'Betatel eSIM Kotlin SDK'
                 description = 'Kotlin SDK for Betatel eSIM API - provides easy integration with eSIM management services'
-                url = 'https://github.com/betatel/esim-sdk-kotlin'
-                
+                url = 'https://github.com/companybetatel/esim-sdk-kotlin'
+
                 licenses {
                     license {
-                        name = 'MIT License'
-                        url = 'https://opensource.org/licenses/MIT'
+                        name = 'GNU General Public License v3.0'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.html'
                     }
                 }
-                
+
                 developers {
                     developer {
                         id = 'betatelltd'
@@ -117,11 +117,11 @@ publishing {
                         organizationUrl = 'https://betatel.com'
                     }
                 }
-                
+
                 scm {
-                    connection = 'scm:git:git://github.com/betatel/esim-sdk-kotlin.git'
-                    developerConnection = 'scm:git:ssh://github.com/betatel/esim-sdk-kotlin.git'
-                    url = 'https://github.com/betatel/esim-sdk-kotlin'
+                    connection = 'scm:git:git://github.com/companybetatel/esim-sdk-kotlin.git'
+                    developerConnection = 'scm:git:ssh://github.com/companybetatel/esim-sdk-kotlin.git'
+                    url = 'https://github.com/companybetatel/esim-sdk-kotlin'
                 }
             }
         }
