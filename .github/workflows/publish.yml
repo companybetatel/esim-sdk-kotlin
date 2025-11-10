@@ -66,8 +66,8 @@ jobs:
         echo "Publishing to Maven Central Portal..."
         echo "Version: ${{ steps.get_version.outputs.VERSION }}"
         echo "Username: ${CENTRAL_USERNAME:0:3}***"
-        echo "Using repository: https://central.sonatype.com/api/v1/publisher/upload"
-        ./gradlew publishMavenPublicationToCentralPortalRepository -PprojVersion=${{ steps.get_version.outputs.VERSION }} --no-daemon --stacktrace --info
+        echo "Using Maven Central Portal publishing API"
+        ./gradlew publishAllPublicationsToCentralPortal -PprojVersion=${{ steps.get_version.outputs.VERSION }} --no-daemon --stacktrace
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
