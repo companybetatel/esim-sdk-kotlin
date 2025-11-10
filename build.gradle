@@ -15,6 +15,7 @@ buildscript {
 
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.2.20'
+    id 'org.jetbrains.dokka' version '1.9.20'
     id 'maven-publish'
     id 'signing'
     id 'java-library'
@@ -54,6 +55,12 @@ spotless {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    compilerOptions {
+        freeCompilerArgs.add("-Xannotation-default-target=param-property")
+    }
+}
+
 test {
     useJUnitPlatform()
 }
@@ -67,8 +74,14 @@ dependencies {
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
 }
 
+// Configure Dokka for Kotlin documentation
+tasks.register('dokkaJavadocJar', Jar) {
+    dependsOn dokkaJavadoc
+    from dokkaJavadoc.outputDirectory
+    archiveClassifier.set('javadoc')
+}
+
 java {
-    withJavadocJar()
     withSourcesJar()
 }
 
@@ -76,6 +89,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.java
+            artifact dokkaJavadocJar
             
             groupId = 'com.betatel.esim'
             artifactId = 'esim-sdk-kotlin'
@@ -104,9 +118,9 @@ publishing {
                 }
                 
                 scm {
-                    connection = 'scm:git:git://github.com/companybetatel/core-services.git'
-                    developerConnection = 'scm:git:ssh://github.com/companybetatel/core-services.git'
-                    url = 'https://github.com/companybetatel/core-services'
+                    connection = 'scm:git:git://github.com/betatel/esim-sdk-kotlin.git'
+                    developerConnection = 'scm:git:ssh://github.com/betatel/esim-sdk-kotlin.git'
+                    url = 'https://github.com/betatel/esim-sdk-kotlin'
                 }
             }
         }

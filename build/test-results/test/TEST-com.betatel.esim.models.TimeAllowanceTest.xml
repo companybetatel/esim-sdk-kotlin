@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.betatel.esim.models.TimeAllowanceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-11-07T01:31:17.444Z" hostname="Muriss-MacBook-Pro.local" time="0.001">
-  <properties/>
-  <testcase name="should test unit" classname="com.betatel.esim.models.TimeAllowanceTest" time="0.001"/>
-  <testcase name="should test duration" classname="com.betatel.esim.models.TimeAllowanceTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

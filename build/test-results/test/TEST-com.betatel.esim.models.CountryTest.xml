@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.betatel.esim.models.CountryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-11-07T01:31:17.328Z" hostname="Muriss-MacBook-Pro.local" time="0.001">
-  <properties/>
-  <testcase name="should test name" classname="com.betatel.esim.models.CountryTest" time="0.001"/>
-  <testcase name="should test iso2" classname="com.betatel.esim.models.CountryTest" time="0.001"/>
-  <testcase name="should test iso3" classname="com.betatel.esim.models.CountryTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
