@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-11-07T01:31:17.335Z" hostname="Muriss-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="should test id" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.004"/>
+  <testcase name="should test name" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.003"/>
+  <testcase name="should test voiceUsageAllowance" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.003"/>
+  <testcase name="should test dataUsageAllowance" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.002"/>
+  <testcase name="should test smsUsageAllowance" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.002"/>
+  <testcase name="should test timeAllowance" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.001"/>
+  <testcase name="should test activationTimeAllowance" classname="com.betatel.esim.models.CreatePackageResponsePackageTemplateTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,141 @@
+
+
+buildscript {
+    ext.kotlin_version = '2.2.20'
+    ext.spotless_version = "7.2.1"
+
+    repositories {
+        maven { url "https://repo1.maven.org/maven2" }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:$spotless_version"
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.2.20'
+    id 'maven-publish'
+    id 'signing'
+    id 'java-library'
+    id 'com.diffplug.spotless' version '7.2.1'
+}
+
+group 'com.betatel.esim'
+version '1.0.1'
+
+wrapper {
+    gradleVersion = '8.14.3'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+repositories {
+    maven { url "https://repo1.maven.org/maven2" }
+}
+
+// Use spotless plugin to automatically format code, remove unused import, etc
+// To apply changes directly to the file, run `gradlew spotlessApply`
+// Ref: https://github.com/diffplug/spotless/tree/main/plugin-gradle
+spotless {
+    // comment out below to run spotless as part of the `check` task
+    enforceCheck false
+
+    format 'misc', {
+        // define the files (e.g. '*.gradle', '*.md') to apply `misc` to
+        target '.gitignore'
+
+        // define the steps to apply to those files
+        trimTrailingWhitespace()
+        indentWithSpaces() // Takes an integer argument if you don't like 4
+        endWithNewline()
+    }
+    kotlin {
+        ktfmt()
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation "com.squareup.moshi:moshi-kotlin:1.15.2"
+    implementation "com.squareup.moshi:moshi-adapters:1.15.2"
+    implementation "com.squareup.okhttp3:okhttp:5.1.0"
+    testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            
+            groupId = 'com.betatel.esim'
+            artifactId = 'esim-sdk-kotlin'
+            version = version
+            
+            pom {
+                name = 'Betatel eSIM Kotlin SDK'
+                description = 'Kotlin SDK for Betatel eSIM API - provides easy integration with eSIM management services'
+                url = 'https://github.com/betatel/esim-sdk-kotlin'
+                
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                
+                developers {
+                    developer {
+                        id = 'betatelltd'
+                        name = 'Betatel LTD'
+                        email = 'info@betatel.com'
+                        organization = 'Betatel'
+                        organizationUrl = 'https://betatel.com'
+                    }
+                }
+                
+                scm {
+                    connection = 'scm:git:git://github.com/companybetatel/core-services.git'
+                    developerConnection = 'scm:git:ssh://github.com/companybetatel/core-services.git'
+                    url = 'https://github.com/companybetatel/core-services'
+                }
+            }
+        }
+    }
+    
+    repositories {
+        maven {
+            name = "OSSRH"
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = project.findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME") ?: ""
+                password = project.findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD") ?: ""
+            }
+        }
+    }
+}
+
+signing {
+    def signingKey = project.findProperty("signingKey") ?: System.getenv("SIGNING_KEY")
+    def signingPassword = project.findProperty("signingPassword") ?: System.getenv("SIGNING_PASSWORD")
+    
+    if (signingKey && signingPassword) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+    }
+    sign publishing.publications.maven
+}
+
+tasks.withType(Sign) {
+    onlyIf { !version.endsWith('SNAPSHOT') }
+}
