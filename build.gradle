@@ -66,11 +66,12 @@ test {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    implementation "com.squareup.moshi:moshi-kotlin:1.15.2"
-    implementation "com.squareup.moshi:moshi-adapters:1.15.2"
-    implementation "com.squareup.okhttp3:okhttp:5.1.0"
+    // Use 'api' instead of 'implementation' for transitive dependencies
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    api "com.squareup.moshi:moshi-kotlin:1.15.2"
+    api "com.squareup.moshi:moshi-adapters:1.15.2"
+    api "com.squareup.okhttp3:okhttp:5.1.0"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
 }
 
@@ -143,11 +144,12 @@ publishing {
 signing {
     def signingKey = project.findProperty("signingKey") ?: System.getenv("SIGNING_KEY")
     def signingPassword = project.findProperty("signingPassword") ?: System.getenv("SIGNING_PASSWORD")
-    
+
+    // Only configure signing if credentials are available
     if (signingKey && signingPassword) {
         useInMemoryPgpKeys(signingKey, signingPassword)
+        sign publishing.publications.maven
     }
-    sign publishing.publications.maven
 }
 
 tasks.withType(Sign) {

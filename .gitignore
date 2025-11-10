@@ -94,7 +94,8 @@ test-reports/
 
 # Local configuration
 local.properties
-gradle.properties.local
+# Note: gradle.properties in project root should be committed
+# Only ignore user-specific gradle.properties in ~/.gradle/
 
 # Sensitive files
 *.keystore

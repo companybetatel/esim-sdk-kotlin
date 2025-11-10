@@ -1,0 +1,101 @@
+name: Publish to Maven Central
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0, v1.0.1, etc.
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production  # Optional: use GitHub environment for additional protection
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Extract version from tag
+      id: get_version
+      run: |
+        # Extract version from tag (e.g., v1.0.1 -> 1.0.1)
+        VERSION=${GITHUB_REF#refs/tags/v}
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        echo "Publishing version: $VERSION"
+
+    - name: Update version in build.gradle
+      run: |
+        # Update version in build.gradle to match tag
+        sed -i "s/^version '.*'/version '${{ steps.get_version.outputs.VERSION }}'/" build.gradle
+        echo "Updated version to: ${{ steps.get_version.outputs.VERSION }}"
+        grep "^version" build.gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build and test
+      run: ./gradlew clean build test --no-daemon --stacktrace
+
+    - name: Publish to Maven Central
+      env:
+        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+      run: |
+        echo "Publishing to Maven Central..."
+        ./gradlew publishMavenPublicationToOSSRHRepository --no-daemon --stacktrace
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/libs/esim-sdk-kotlin-*.jar
+        body: |
+          ## Release ${{ steps.get_version.outputs.VERSION }}
+
+          Published to Maven Central:
+          ```gradle
+          implementation 'com.betatel.esim:esim-sdk-kotlin:${{ steps.get_version.outputs.VERSION }}'
+          ```
+
+          ### Artifacts
+          - Main JAR: `esim-sdk-kotlin-${{ steps.get_version.outputs.VERSION }}.jar`
+          - Sources JAR: `esim-sdk-kotlin-${{ steps.get_version.outputs.VERSION }}-sources.jar`
+          - Javadoc JAR: `esim-sdk-kotlin-${{ steps.get_version.outputs.VERSION }}-javadoc.jar`
+
+          ### Installation
+          Add to your `build.gradle`:
+          ```gradle
+          repositories {
+              mavenCentral()
+          }
+
+          dependencies {
+              implementation 'com.betatel.esim:esim-sdk-kotlin:${{ steps.get_version.outputs.VERSION }}'
+          }
+          ```
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Notify on success
+      if: success()
+      run: |
+        echo "✅ Successfully published version ${{ steps.get_version.outputs.VERSION }} to Maven Central"
+        echo "🎉 GitHub Release created at: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+
+    - name: Notify on failure
+      if: failure()
+      run: |
+        echo "❌ Failed to publish version ${{ steps.get_version.outputs.VERSION }}"
+        echo "Please check the logs above for details"
+        exit 1
