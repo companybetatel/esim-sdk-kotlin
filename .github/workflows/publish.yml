@@ -30,18 +30,11 @@ jobs:
         echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
         echo "Publishing version: $VERSION"
 
-    - name: Update version in build.gradle
-      run: |
-        # Update version in build.gradle to match tag
-        sed -i "s/^version '.*'/version '${{ steps.get_version.outputs.VERSION }}'/" build.gradle
-        echo "Updated version to: ${{ steps.get_version.outputs.VERSION }}"
-        grep "^version" build.gradle
-
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
     - name: Build and test
-      run: ./gradlew clean build test --no-daemon --stacktrace
+      run: ./gradlew clean build test -PprojVersion=${{ steps.get_version.outputs.VERSION }} --no-daemon --stacktrace
 
     - name: Verify secrets are configured
       run: |
@@ -71,9 +64,10 @@ jobs:
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
       run: |
         echo "Publishing to Maven Central Portal..."
+        echo "Version: ${{ steps.get_version.outputs.VERSION }}"
         echo "Username: ${CENTRAL_USERNAME:0:3}***"
         echo "Using repository: https://central.sonatype.com/api/v1/publisher/upload"
-        ./gradlew publishMavenPublicationToCentralPortalRepository --no-daemon --stacktrace --info
+        ./gradlew publishMavenPublicationToCentralPortalRepository -PprojVersion=${{ steps.get_version.outputs.VERSION }} --no-daemon --stacktrace --info
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
