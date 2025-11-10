@@ -43,6 +43,26 @@ jobs:
     - name: Build and test
       run: ./gradlew clean build test --no-daemon --stacktrace
 
+    - name: Verify secrets are configured
+      run: |
+        if [ -z "${{ secrets.OSSRH_USERNAME }}" ]; then
+          echo "❌ ERROR: OSSRH_USERNAME secret is not set"
+          exit 1
+        fi
+        if [ -z "${{ secrets.OSSRH_PASSWORD }}" ]; then
+          echo "❌ ERROR: OSSRH_PASSWORD secret is not set"
+          exit 1
+        fi
+        if [ -z "${{ secrets.SIGNING_KEY }}" ]; then
+          echo "❌ ERROR: SIGNING_KEY secret is not set"
+          exit 1
+        fi
+        if [ -z "${{ secrets.SIGNING_PASSWORD }}" ]; then
+          echo "❌ ERROR: SIGNING_PASSWORD secret is not set"
+          exit 1
+        fi
+        echo "✅ All required secrets are configured"
+
     - name: Publish to Maven Central
       env:
         OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
@@ -51,7 +71,9 @@ jobs:
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
       run: |
         echo "Publishing to Maven Central..."
-        ./gradlew publishMavenPublicationToOSSRHRepository --no-daemon --stacktrace
+        echo "Username: ${OSSRH_USERNAME:0:3}***"
+        echo "Using repository: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+        ./gradlew publishMavenPublicationToOSSRHRepository --no-daemon --stacktrace --info
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1

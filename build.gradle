@@ -5,7 +5,7 @@ buildscript {
     ext.spotless_version = "7.2.1"
 
     repositories {
-        maven { url "https://repo1.maven.org/maven2" }
+        maven { url = "https://repo1.maven.org/maven2" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -22,8 +22,8 @@ plugins {
     id 'com.diffplug.spotless' version '7.2.1'
 }
 
-group 'com.betatel.esim'
-version '1.0.1'
+group = 'com.betatel.esim'
+version = '1.0.1'
 
 wrapper {
     gradleVersion = '8.14.3'
@@ -31,7 +31,7 @@ wrapper {
 }
 
 repositories {
-    maven { url "https://repo1.maven.org/maven2" }
+    maven { url = "https://repo1.maven.org/maven2" }
 }
 
 // Use spotless plugin to automatically format code, remove unused import, etc
@@ -39,7 +39,7 @@ repositories {
 // Ref: https://github.com/diffplug/spotless/tree/main/plugin-gradle
 spotless {
     // comment out below to run spotless as part of the `check` task
-    enforceCheck false
+    enforceCheck = false
 
     format 'misc', {
         // define the files (e.g. '*.gradle', '*.md') to apply `misc` to
