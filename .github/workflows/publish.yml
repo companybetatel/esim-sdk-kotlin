@@ -45,12 +45,12 @@ jobs:
 
     - name: Verify secrets are configured
       run: |
-        if [ -z "${{ secrets.OSSRH_USERNAME }}" ]; then
-          echo "❌ ERROR: OSSRH_USERNAME secret is not set"
+        if [ -z "${{ secrets.CENTRAL_USERNAME }}" ]; then
+          echo "❌ ERROR: CENTRAL_USERNAME secret is not set"
           exit 1
         fi
-        if [ -z "${{ secrets.OSSRH_PASSWORD }}" ]; then
-          echo "❌ ERROR: OSSRH_PASSWORD secret is not set"
+        if [ -z "${{ secrets.CENTRAL_PASSWORD }}" ]; then
+          echo "❌ ERROR: CENTRAL_PASSWORD secret is not set"
           exit 1
         fi
         if [ -z "${{ secrets.SIGNING_KEY }}" ]; then
@@ -63,17 +63,17 @@ jobs:
         fi
         echo "✅ All required secrets are configured"
 
-    - name: Publish to Maven Central
+    - name: Publish to Maven Central Portal
       env:
-        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+        CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
         SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
       run: |
-        echo "Publishing to Maven Central..."
-        echo "Username: ${OSSRH_USERNAME:0:3}***"
-        echo "Using repository: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-        ./gradlew publishMavenPublicationToOSSRHRepository --no-daemon --stacktrace --info
+        echo "Publishing to Maven Central Portal..."
+        echo "Username: ${CENTRAL_USERNAME:0:3}***"
+        echo "Using repository: https://central.sonatype.com/api/v1/publisher/upload"
+        ./gradlew publishMavenPublicationToCentralPortalRepository --no-daemon --stacktrace --info
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
