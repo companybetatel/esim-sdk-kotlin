@@ -10,6 +10,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: production  # Optional: use GitHub environment for additional protection
+    permissions:
+      contents: write  # Required to create releases
+      packages: write  # Required to publish packages
 
     steps:
     - name: Checkout code
