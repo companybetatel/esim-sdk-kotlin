@@ -15,7 +15,7 @@
 
 package com.betatel.esim.models
 
-import com.betatel.esim.models.ESIM
+import com.betatel.esim.models.ESIMPartial
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -46,7 +46,7 @@ data class GetESIMsResponse (
 
     /* Array of eSIM objects */
     @Json(name = "sims")
-    val sims: kotlin.collections.List<ESIM>
+    val sims: kotlin.collections.List<ESIMPartial>
 
 ) {
 

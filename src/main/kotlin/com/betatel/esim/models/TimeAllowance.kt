@@ -47,13 +47,7 @@ data class TimeAllowance (
     @JsonClass(generateAdapter = false)
     enum class Unit(val value: kotlin.String) {
         @Json(name = "SECOND") SECOND("SECOND"),
-        @Json(name = "MINUTE") MINUTE("MINUTE"),
-        @Json(name = "HOUR") HOUR("HOUR"),
-        @Json(name = "DAY") DAY("DAY"),
-        @Json(name = "WEEK") WEEK("WEEK"),
-        @Json(name = "MONTH") MONTH("MONTH"),
-        @Json(name = "CALENDAR_MONTH") CALENDAR_MONTH("CALENDAR_MONTH"),
-        @Json(name = "YEAR") YEAR("YEAR");
+        @Json(name = "CALENDAR_MONTH") CALENDAR_MONTH("CALENDAR_MONTH");
     }
 
 }

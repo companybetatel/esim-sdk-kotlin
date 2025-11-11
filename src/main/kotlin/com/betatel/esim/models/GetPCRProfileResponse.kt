@@ -17,6 +17,7 @@ package com.betatel.esim.models
 
 import com.betatel.esim.models.DataProfile
 import com.betatel.esim.models.ServiceProfile
+import com.betatel.esim.models.Wallet
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -24,15 +25,21 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param sim SIM ICCID
  * @param `data` 
  * @param voice 
  * @param sms 
+ * @param wallets List of wallets associated with the SIM
  * @param walletMode Current wallet mode
  * @param routePolicy Current route policy
  */
 
 
 data class GetPCRProfileResponse (
+
+    /* SIM ICCID */
+    @Json(name = "sim")
+    val sim: kotlin.String,
 
     @Json(name = "data")
     val `data`: DataProfile,
@@ -42,6 +49,10 @@ data class GetPCRProfileResponse (
 
     @Json(name = "sms")
     val sms: ServiceProfile,
+
+    /* List of wallets associated with the SIM */
+    @Json(name = "wallets")
+    val wallets: kotlin.collections.List<Wallet>,
 
     /* Current wallet mode */
     @Json(name = "wallet_mode")

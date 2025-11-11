@@ -15,6 +15,7 @@
 
 package com.betatel.esim.models
 
+import com.betatel.esim.models.PackageTemplate
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -26,6 +27,13 @@ import com.squareup.moshi.JsonClass
  * @param sim SIM ICCID associated with this package
  * @param packageTemplate Package template ID
  * @param status Current package status
+ * @param windowActivationStart Unix timestamp for activation window start
+ * @param windowActivationEnd Unix timestamp for activation window end
+ * @param voiceUsageRemaining Remaining voice usage
+ * @param dataUsageRemaining Remaining data usage in bytes
+ * @param smsUsageRemaining Remaining SMS usage
+ * @param createdDate Unix timestamp when package was created
+ * @param expiryDate Unix timestamp when package expires
  * @param activationDate Unix timestamp when package was activated
  * @param terminationDate Unix timestamp when package was terminated
  * @param timeAllowance Time allowance in seconds
@@ -44,18 +52,46 @@ data class Package (
 
     /* Package template ID */
     @Json(name = "package_template")
-    val packageTemplate: kotlin.Int,
+    val packageTemplate: PackageTemplate,
 
     /* Current package status */
     @Json(name = "status")
     val status: Package.Status,
 
+    /* Unix timestamp for activation window start */
+    @Json(name = "window_activation_start")
+    val windowActivationStart: kotlin.Long? = null,
+
+    /* Unix timestamp for activation window end */
+    @Json(name = "window_activation_end")
+    val windowActivationEnd: kotlin.Long? = null,
+
+    /* Remaining voice usage */
+    @Json(name = "voice_usage_remaining")
+    val voiceUsageRemaining: kotlin.Long? = null,
+
+    /* Remaining data usage in bytes */
+    @Json(name = "data_usage_remaining")
+    val dataUsageRemaining: kotlin.Long? = null,
+
+    /* Remaining SMS usage */
+    @Json(name = "sms_usage_remaining")
+    val smsUsageRemaining: kotlin.Long? = null,
+
+    /* Unix timestamp when package was created */
+    @Json(name = "created_date")
+    val createdDate: kotlin.Long? = null,
+
+    /* Unix timestamp when package expires */
+    @Json(name = "expiry_date")
+    val expiryDate: kotlin.Long? = null,
+
     /* Unix timestamp when package was activated */
-    @Json(name = "activation_date")
+    @Json(name = "activated_date")
     val activationDate: kotlin.Long? = null,
 
     /* Unix timestamp when package was terminated */
-    @Json(name = "termination_date")
+    @Json(name = "terminated_date")
     val terminationDate: kotlin.Long? = null,
 
     /* Time allowance in seconds */

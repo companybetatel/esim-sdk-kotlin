@@ -31,14 +31,14 @@ import com.squareup.moshi.JsonClass
  * @param group 
  * @param inventory 
  * @param company 
- * @param provisionedDate Unix timestamp when SIM was provisioned
- * @param terminatedDate Unix timestamp when SIM was terminated (0 if active)
+ * @param createdDate Unix timestamp when SIM was created
+ * @param modifiedDate Unix timestamp when SIM was modified
  * @param imsis List of associated IMSIs
  * @param mappedImsi Currently mapped IMSI
  */
 
 
-data class ESIM (
+data class ESIMPartial (
 
     /* Integrated Circuit Card Identifier */
     @Json(name = "iccid")
@@ -49,21 +49,21 @@ data class ESIM (
     val simStatus: ESIM.SimStatus,
 
     @Json(name = "group")
-    val group: ESIMGroup? = null,
+    val group: kotlin.Int? = null,
 
     @Json(name = "inventory")
-    val inventory: ESIMInventory? = null,
+    val inventory: kotlin.Int? = null,
 
     @Json(name = "company")
-    val company: ESIMCompany? = null,
+    val company: kotlin.Int? = null,
 
-    /* Unix timestamp when SIM was provisioned */
-    @Json(name = "provisioned_date")
-    val provisionedDate: kotlin.Long? = null,
+    /* Unix timestamp when SIM was created */
+    @Json(name = "created_date")
+    val createdDate: kotlin.Long? = null,
 
-    /* Unix timestamp when SIM was terminated (0 if active) */
-    @Json(name = "terminated_date")
-    val terminatedDate: kotlin.Long? = null,
+    /* Unix timestamp when SIM was modified */
+    @Json(name = "modified_date")
+    val modifiedDate: kotlin.Long? = null,
 
     /* List of associated IMSIs */
     @Json(name = "imsis")

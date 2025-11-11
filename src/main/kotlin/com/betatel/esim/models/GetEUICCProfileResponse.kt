@@ -34,6 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param releaseDate Unix timestamp of profile release
  * @param ccRequired Whether confirmation code is required
  * @param ccRetries Number of confirmation code retries
+ * @param eid EID (eUICC Identifier) of the eSIM
  */
 
 
@@ -49,7 +50,7 @@ data class GetEUICCProfileResponse (
 
     /* Current state of the eUICC profile */
     @Json(name = "state")
-    val state: GetEUICCProfileResponse.State,
+    val state: kotlin.String,
 
     /* Unix timestamp of last operation */
     @Json(name = "last_operation_date")
@@ -80,7 +81,11 @@ data class GetEUICCProfileResponse (
 
     /* Number of confirmation code retries */
     @Json(name = "cc_retries")
-    val ccRetries: kotlin.Int? = null
+    val ccRetries: kotlin.Int? = null,
+
+    /* EID (eUICC Identifier) of the eSIM */
+    @Json(name = "eid")
+    val eid: kotlin.String? = null
 
 ) {
 

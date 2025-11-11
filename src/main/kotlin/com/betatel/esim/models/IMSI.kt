@@ -31,11 +31,11 @@ data class IMSI (
 
     /* Sponsor identifier */
     @Json(name = "sponsor_id")
-    val sponsorId: kotlin.Int,
+    val sponsorId: kotlin.Long,
 
     /* International Mobile Subscriber Identity */
     @Json(name = "imsi")
-    val imsi: kotlin.Int
+    val imsi: kotlin.Long
 
 ) {
 
