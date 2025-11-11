@@ -86,8 +86,8 @@ data class ESIM (
         @Json(name = "ASSIGNED") ASSIGNED("ASSIGNED"),
         @Json(name = "ACTIVE") ACTIVE("ACTIVE"),
         @Json(name = "SUSPENDED") SUSPENDED("SUSPENDED"),
-        @Json(name = "IN_SERVICE") TERMINATED("IN_SERVICE"),
-        @Json(name = "PRE_SERVICE") TERMINATED("PRE_SERVICE"),
+        @Json(name = "IN_SERVICE") IN_SERVICE("IN_SERVICE"),
+        @Json(name = "PRE_SERVICE") PRE_SERVICE("PRE_SERVICE"),
         @Json(name = "TERMINATED") TERMINATED("TERMINATED");
     }
 
