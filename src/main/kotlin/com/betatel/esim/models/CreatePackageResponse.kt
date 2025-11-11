@@ -61,11 +61,11 @@ data class CreatePackageResponse (
 
     /* Unix timestamp when package was activated (0 if not activated) */
     @Json(name = "activated_date")
-    val activatedDate: kotlin.Long,
+    val activatedDate: kotlin.Long? = null,
 
     /* Unix timestamp when package was terminated (0 if not terminated) */
     @Json(name = "terminated_date")
-    val terminatedDate: kotlin.Long,
+    val terminatedDate: kotlin.Long? = null,
 
     /* Unix timestamp of activation window start */
     @Json(name = "window_activation_start")
@@ -100,7 +100,7 @@ data class CreatePackageResponse (
 
     /* Access Point Name */
     @Json(name = "apn")
-    val apn: kotlin.String
+    val apn: kotlin.String? = null
 
 ) {
 
