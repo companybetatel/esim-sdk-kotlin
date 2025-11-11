@@ -8,8 +8,8 @@
 | **sim** | **kotlin.String**                                                                   | SIM ICCID |  |
 | **createdDate** | **kotlin.Long**                                                                     | Unix timestamp of package creation |  |
 | **expiryDate** | **kotlin.Long**                                                                      | Unix timestamp of package expiry |  |
-| **activatedDate** | **kotlin.Long**                                                                      | Unix timestamp when package was activated (0 if not activated) |  |
-| **terminatedDate** | **kotlin.Long**                                                                      | Unix timestamp when package was terminated (0 if not terminated) |  |
+| **activatedDate** | **kotlin.Long**                                                                      | Unix timestamp when package was activated (0 if not activated) |  [optional] |
+| **terminatedDate** | **kotlin.Long**                                                                      | Unix timestamp when package was terminated (0 if not terminated) |  [optional] |
 | **windowActivationStart** | **kotlin.Long**                                                                      | Unix timestamp of activation window start |  |
 | **windowActivationEnd** | **kotlin.Long**                                                                      | Unix timestamp of activation window end |  |
 | **status** | [**inline**](#Status)                                                               | Current package status |  |
@@ -18,7 +18,7 @@
 | **smsUsageRemaining** | **kotlin.Long**                                                                      | Remaining SMS count |  |
 | **timeAllowance** | **kotlin.Long**                                                                      | Time allowance in seconds |  |
 | **packageTemplate** | [**CreatePackageResponsePackageTemplate**](CreatePackageResponsePackageTemplate.md) |  |  |
-| **apn** | **kotlin.String**                                                                   | Access Point Name |  |
+| **apn** | **kotlin.String**                                                                   | Access Point Name |  [optional] |
 
 
 <a id="Status"></a>
