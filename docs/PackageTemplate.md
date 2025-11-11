@@ -34,9 +34,9 @@
 
 <a id="Status"></a>
 ## Enum: status
-| Name | Value |
-| ---- | ----- |
-| status | Active, Inactive |
+| Name | Value                            |
+| ---- |----------------------------------|
+| status | Active, Not Active, De-activated |
 
 
 

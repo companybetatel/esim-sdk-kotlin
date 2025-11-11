@@ -17,9 +17,9 @@
 
 <a id="SimStatus"></a>
 ## Enum: sim_status
-| Name | Value                                                                                    |
-| ---- |------------------------------------------------------------------------------------------|
-| simStatus | WAITING_FOR_ASSIGNMENT, ASSIGNED, ACTIVE, SUSPENDED, TERMINATED, PRE_SERVICE, IN_SERVICE |
+| Name | Value                                                       |
+| ---- |-------------------------------------------------------------|
+| simStatus | WAITING_FOR_ASSIGNMENT, PRE_SERVICE, IN_SERVICE, TERMINATED |
 
 
 

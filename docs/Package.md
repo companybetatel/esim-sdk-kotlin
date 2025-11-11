@@ -17,7 +17,7 @@
 ## Enum: status
 | Name | Value |
 | ---- | ----- |
-| status | NOT_ACTIVE, ACTIVE, SUSPENDED, TERMINATED |
+| status | NOT_ACTIVE, ACTIVE, TERMINATED |
 
 
 
