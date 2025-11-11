@@ -137,11 +137,12 @@ data class PackageTemplate (
     /**
      * Template status
      *
-     * Values: Active,DeActivated
+     * Values: Active,Not Active and De-activated
      */
     @JsonClass(generateAdapter = false)
     enum class Status(val value: kotlin.String) {
         @Json(name = "Active") Active("Active"),
+        @Json(name = "Not Active") NotActive("Not Active");
         @Json(name = "De-activated") DeActivated("De-activated");
     }
 

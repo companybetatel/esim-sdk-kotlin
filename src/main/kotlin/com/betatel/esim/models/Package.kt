@@ -73,7 +73,6 @@ data class Package (
     enum class Status(val value: kotlin.String) {
         @Json(name = "NOT_ACTIVE") NOT_ACTIVE("NOT_ACTIVE"),
         @Json(name = "ACTIVE") ACTIVE("ACTIVE"),
-        @Json(name = "SUSPENDED") SUSPENDED("SUSPENDED"),
         @Json(name = "TERMINATED") TERMINATED("TERMINATED");
     }
 
