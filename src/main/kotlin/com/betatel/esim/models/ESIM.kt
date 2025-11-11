@@ -78,7 +78,7 @@ data class ESIM (
     /**
      * Current status of the SIM
      *
-     * Values: WAITING_FOR_ASSIGNMENT,ASSIGNED,ACTIVE,SUSPENDED,TERMINATED
+     * Values: WAITING_FOR_ASSIGNMENT,ASSIGNED,ACTIVE,SUSPENDED,TERMINATED, IN_SERVICE, PRE_SERVICE
      */
     @JsonClass(generateAdapter = false)
     enum class SimStatus(val value: kotlin.String) {
@@ -86,6 +86,8 @@ data class ESIM (
         @Json(name = "ASSIGNED") ASSIGNED("ASSIGNED"),
         @Json(name = "ACTIVE") ACTIVE("ACTIVE"),
         @Json(name = "SUSPENDED") SUSPENDED("SUSPENDED"),
+        @Json(name = "IN_SERVICE") TERMINATED("IN_SERVICE"),
+        @Json(name = "PRE_SERVICE") TERMINATED("PRE_SERVICE"),
         @Json(name = "TERMINATED") TERMINATED("TERMINATED");
     }
 
