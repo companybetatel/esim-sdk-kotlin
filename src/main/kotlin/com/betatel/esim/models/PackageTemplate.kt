@@ -61,7 +61,7 @@ data class PackageTemplate (
 
     /* Data allowance in bytes */
     @Json(name = "data_usage_allowance")
-    val dataUsageAllowance: kotlin.Int,
+    val dataUsageAllowance: kotlin.Long,
 
     /* Type of activation */
     @Json(name = "activation_type")
@@ -69,11 +69,11 @@ data class PackageTemplate (
 
     /* Unix timestamp of creation */
     @Json(name = "created_date")
-    val createdDate: kotlin.Int,
+    val createdDate: kotlin.Long,
 
     /* Unix timestamp of last modification */
     @Json(name = "modified_date")
-    val modifiedDate: kotlin.Int,
+    val modifiedDate: kotlin.Long,
 
     @Json(name = "time_allowance")
     val timeAllowance: TimeAllowance,
@@ -88,27 +88,27 @@ data class PackageTemplate (
 
     /* Voice allowance in minutes */
     @Json(name = "voice_usage_allowance")
-    val voiceUsageAllowance: kotlin.Int? = null,
+    val voiceUsageAllowance: kotlin.Long? = null,
 
     /* SMS allowance count */
     @Json(name = "sms_usage_allowance")
-    val smsUsageAllowance: kotlin.Int? = null,
+    val smsUsageAllowance: kotlin.Long? = null,
 
     /* Time allowance for activation in seconds */
     @Json(name = "activation_time_allowance")
-    val activationTimeAllowance: kotlin.Int? = null,
+    val activationTimeAllowance: kotlin.Long? = null,
 
     /* Unix timestamp of earliest activation date */
     @Json(name = "earliest_activation_date")
-    val earliestActivationDate: kotlin.Int? = null,
+    val earliestActivationDate: kotlin.Long? = null,
 
     /* Unix timestamp of earliest availability */
     @Json(name = "earliest_available_date")
-    val earliestAvailableDate: kotlin.Int? = null,
+    val earliestAvailableDate: kotlin.Long? = null,
 
     /* Unix timestamp of latest availability */
     @Json(name = "latest_available_date")
-    val latestAvailableDate: kotlin.Int? = null,
+    val latestAvailableDate: kotlin.Long? = null,
 
     /* Additional notes about the template */
     @Json(name = "notes")
@@ -116,7 +116,7 @@ data class PackageTemplate (
 
     /* Unix timestamp of deactivation (0 if active) */
     @Json(name = "deactivated_date")
-    val deactivatedDate: kotlin.Int? = null,
+    val deactivatedDate: kotlin.Long? = null,
 
     /* Access Point Name */
     @Json(name = "apn")

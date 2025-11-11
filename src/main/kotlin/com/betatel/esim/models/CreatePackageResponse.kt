@@ -53,27 +53,27 @@ data class CreatePackageResponse (
 
     /* Unix timestamp of package creation */
     @Json(name = "created_date")
-    val createdDate: kotlin.Int,
+    val createdDate: kotlin.Long,
 
     /* Unix timestamp of package expiry */
     @Json(name = "expiry_date")
-    val expiryDate: kotlin.Int,
+    val expiryDate: kotlin.Long,
 
     /* Unix timestamp when package was activated (0 if not activated) */
     @Json(name = "activated_date")
-    val activatedDate: kotlin.Int,
+    val activatedDate: kotlin.Long,
 
     /* Unix timestamp when package was terminated (0 if not terminated) */
     @Json(name = "terminated_date")
-    val terminatedDate: kotlin.Int,
+    val terminatedDate: kotlin.Long,
 
     /* Unix timestamp of activation window start */
     @Json(name = "window_activation_start")
-    val windowActivationStart: kotlin.Int,
+    val windowActivationStart: kotlin.Long,
 
     /* Unix timestamp of activation window end */
     @Json(name = "window_activation_end")
-    val windowActivationEnd: kotlin.Int,
+    val windowActivationEnd: kotlin.Long,
 
     /* Current package status */
     @Json(name = "status")
@@ -81,19 +81,19 @@ data class CreatePackageResponse (
 
     /* Remaining voice minutes */
     @Json(name = "voice_usage_remaining")
-    val voiceUsageRemaining: kotlin.Int,
+    val voiceUsageRemaining: kotlin.Long,
 
     /* Remaining data in bytes */
     @Json(name = "data_usage_remaining")
-    val dataUsageRemaining: kotlin.Int,
+    val dataUsageRemaining: kotlin.Long,
 
     /* Remaining SMS count */
     @Json(name = "sms_usage_remaining")
-    val smsUsageRemaining: kotlin.Int,
+    val smsUsageRemaining: kotlin.Long,
 
     /* Time allowance in seconds */
     @Json(name = "time_allowance")
-    val timeAllowance: kotlin.Int,
+    val timeAllowance: kotlin.Long,
 
     @Json(name = "package_template")
     val packageTemplate: CreatePackageResponsePackageTemplate,

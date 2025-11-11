@@ -51,22 +51,22 @@ data class CreatePackageTemplateRequest (
 
     /* Data allowance in bytes */
     @Json(name = "data_usage_allowance")
-    val dataUsageAllowance: kotlin.Int,
+    val dataUsageAllowance: kotlin.Long,
 
     @Json(name = "time_allowance")
     val timeAllowance: TimeAllowance,
 
     /* Time allowance for activation in seconds */
     @Json(name = "activation_time_allowance")
-    val activationTimeAllowance: kotlin.Int,
+    val activationTimeAllowance: kotlin.Long,
 
     /* Unix timestamp for earliest availability */
     @Json(name = "earliest_available_date")
-    val earliestAvailableDate: kotlin.Int,
+    val earliestAvailableDate: kotlin.Long,
 
     /* Unix timestamp for latest availability */
     @Json(name = "latest_available_date")
-    val latestAvailableDate: kotlin.Int,
+    val latestAvailableDate: kotlin.Long,
 
     /* Inventory ID to associate the template with */
     @Json(name = "inventory")

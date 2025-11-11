@@ -49,11 +49,11 @@ data class Inventory (
 
     /* Unix timestamp of creation date */
     @Json(name = "created_date")
-    val createdDate: kotlin.Int,
+    val createdDate: kotlin.Long,
 
     /* Unix timestamp of last modification */
     @Json(name = "modified_date")
-    val modifiedDate: kotlin.Int,
+    val modifiedDate: kotlin.Long,
 
     /* Company ID that owns this inventory */
     @Json(name = "company")
@@ -69,7 +69,7 @@ data class Inventory (
 
     /* Unix timestamp of deletion (0 if not deleted) */
     @Json(name = "deleted_date")
-    val deletedDate: kotlin.Int? = null,
+    val deletedDate: kotlin.Long? = null,
 
     /* Parent inventory ID (0 if root inventory) */
     @Json(name = "parent_inventory")
@@ -77,7 +77,7 @@ data class Inventory (
 
     /* Unix timestamp of deactivation (0 if active) */
     @Json(name = "deactivated_date")
-    val deactivatedDate: kotlin.Int? = null,
+    val deactivatedDate: kotlin.Long? = null,
 
     /* Associated wallet ID */
     @Json(name = "wallet")

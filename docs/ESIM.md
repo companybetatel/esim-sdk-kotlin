@@ -9,8 +9,8 @@
 | **group** | [**ESIMGroup**](ESIMGroup.md) |  |  [optional] |
 | **inventory** | [**ESIMInventory**](ESIMInventory.md) |  |  [optional] |
 | **company** | [**ESIMCompany**](ESIMCompany.md) |  |  [optional] |
-| **provisionedDate** | **kotlin.Int** | Unix timestamp when SIM was provisioned |  [optional] |
-| **terminatedDate** | **kotlin.Int** | Unix timestamp when SIM was terminated (0 if active) |  [optional] |
+| **provisionedDate** | **kotlin.Long** | Unix timestamp when SIM was provisioned |  [optional] |
+| **terminatedDate** | **kotlin.Long** | Unix timestamp when SIM was terminated (0 if active) |  [optional] |
 | **imsis** | [**kotlin.collections.List&lt;IMSI&gt;**](IMSI.md) | List of associated IMSIs |  [optional] |
 | **mappedImsi** | **kotlin.Int** | Currently mapped IMSI |  [optional] |
 

@@ -40,7 +40,7 @@ data class CreatePackageRequest (
 
     /* Optional time allowance in seconds */
     @Json(name = "time_allowance")
-    val timeAllowance: kotlin.Int? = null
+    val timeAllowance: kotlin.Long? = null
 
 ) {
 

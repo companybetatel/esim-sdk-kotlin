@@ -59,11 +59,11 @@ data class ESIM (
 
     /* Unix timestamp when SIM was provisioned */
     @Json(name = "provisioned_date")
-    val provisionedDate: kotlin.Int? = null,
+    val provisionedDate: kotlin.Long? = null,
 
     /* Unix timestamp when SIM was terminated (0 if active) */
     @Json(name = "terminated_date")
-    val terminatedDate: kotlin.Int? = null,
+    val terminatedDate: kotlin.Long? = null,
 
     /* List of associated IMSIs */
     @Json(name = "imsis")

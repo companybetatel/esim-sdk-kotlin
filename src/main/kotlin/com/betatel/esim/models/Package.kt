@@ -52,15 +52,15 @@ data class Package (
 
     /* Unix timestamp when package was activated */
     @Json(name = "activation_date")
-    val activationDate: kotlin.Int? = null,
+    val activationDate: kotlin.Long? = null,
 
     /* Unix timestamp when package was terminated */
     @Json(name = "termination_date")
-    val terminationDate: kotlin.Int? = null,
+    val terminationDate: kotlin.Long? = null,
 
     /* Time allowance in seconds */
     @Json(name = "time_allowance")
-    val timeAllowance: kotlin.Int? = null
+    val timeAllowance: kotlin.Long? = null
 
 ) {
 

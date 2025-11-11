@@ -53,7 +53,7 @@ data class GetEUICCProfileResponse (
 
     /* Unix timestamp of last operation */
     @Json(name = "last_operation_date")
-    val lastOperationDate: kotlin.Int,
+    val lastOperationDate: kotlin.Long,
 
     /* LPA activation code for eSIM provisioning */
     @Json(name = "activation_code")
@@ -72,7 +72,7 @@ data class GetEUICCProfileResponse (
 
     /* Unix timestamp of profile release */
     @Json(name = "release_date")
-    val releaseDate: kotlin.Int? = null,
+    val releaseDate: kotlin.Long? = null,
 
     /* Whether confirmation code is required */
     @Json(name = "cc_required")

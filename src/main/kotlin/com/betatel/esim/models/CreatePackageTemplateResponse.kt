@@ -45,22 +45,22 @@ data class CreatePackageTemplateResponse (
 
     /* Voice allowance in minutes */
     @Json(name = "voice_usage_allowance")
-    val voiceUsageAllowance: kotlin.Int,
+    val voiceUsageAllowance: kotlin.Long,
 
     /* Data allowance in bytes */
     @Json(name = "data_usage_allowance")
-    val dataUsageAllowance: kotlin.Int,
+    val dataUsageAllowance: kotlin.Long,
 
     /* SMS allowance count */
     @Json(name = "sms_usage_allowance")
-    val smsUsageAllowance: kotlin.Int,
+    val smsUsageAllowance: kotlin.Long,
 
     @Json(name = "time_allowance")
     val timeAllowance: TimeAllowance,
 
     /* Time allowance for activation in seconds */
     @Json(name = "activation_time_allowance")
-    val activationTimeAllowance: kotlin.Int
+    val activationTimeAllowance: kotlin.Long
 
 ) {
 

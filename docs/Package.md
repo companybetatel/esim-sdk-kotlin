@@ -8,9 +8,9 @@
 | **sim** | **kotlin.String** | SIM ICCID associated with this package |  |
 | **packageTemplate** | **kotlin.Int** | Package template ID |  |
 | **status** | [**inline**](#Status) | Current package status |  |
-| **activationDate** | **kotlin.Int** | Unix timestamp when package was activated |  [optional] |
-| **terminationDate** | **kotlin.Int** | Unix timestamp when package was terminated |  [optional] |
-| **timeAllowance** | **kotlin.Int** | Time allowance in seconds |  [optional] |
+| **activationDate** | **kotlin.Long** | Unix timestamp when package was activated |  [optional] |
+| **terminationDate** | **kotlin.Long** | Unix timestamp when package was terminated |  [optional] |
+| **timeAllowance** | **kotlin.Long** | Time allowance in seconds |  [optional] |
 
 
 <a id="Status"></a>
