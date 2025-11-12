@@ -50,7 +50,7 @@ data class GetEUICCProfileResponse (
 
     /* Current state of the eUICC profile */
     @Json(name = "state")
-    val state: State,
+    val state: GetEUICCProfileResponse.State,
 
     /* Unix timestamp of last operation */
     @Json(name = "last_operation_date")
