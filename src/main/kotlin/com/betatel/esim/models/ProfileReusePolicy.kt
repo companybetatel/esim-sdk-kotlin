@@ -48,7 +48,8 @@ data class ProfileReusePolicy (
     enum class ReuseType(val value: kotlin.String) {
         @Json(name = "NEW_EID_MID") NEW_EID_MID("NEW_EID_MID"),
         @Json(name = "NEW_EID") NEW_EID("NEW_EID"),
-        @Json(name = "SAME_EID") SAME_EID("SAME_EID");
+        @Json(name = "SAME_EID") SAME_EID("SAME_EID"),
+        @Json(name = "SAME_EID_MID") SAME_EID_MID("SAME_EID_MID");
     }
 
 }

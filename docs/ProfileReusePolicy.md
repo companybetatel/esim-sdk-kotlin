@@ -10,9 +10,9 @@
 
 <a id="ReuseType"></a>
 ## Enum: reuse_type
-| Name | Value |
-| ---- | ----- |
-| reuseType | NEW_EID_MID, NEW_EID, SAME_EID |
+| Name | Value                            |
+| ---- |----------------------------------|
+| reuseType | NEW_EID_MID, NEW_EID, SAME_EID, SAME_EID_MID |
 
 
 
