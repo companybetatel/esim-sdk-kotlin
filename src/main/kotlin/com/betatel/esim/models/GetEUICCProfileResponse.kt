@@ -96,18 +96,18 @@ data class GetEUICCProfileResponse (
      */
     @JsonClass(generateAdapter = false)
     enum class State(val value: kotlin.String) {
-        @Json(name = "AVAILABLE") AVAILABLE("AVAILABLE")
-        @Json(name = "CONFIRMED") CONFIRMED("CONFIRMED")
-        @Json(name = "ALLOCATED")  ALLOCATED("ALLOCATED")
-        @Json(name = "LINKED") LINKED("LINKED")
-        @Json(name = "DOWNLOADED") DOWNLOADED("DOWNLOADED")
-        @Json(name = "RELEASED") RELEASED("RELEASED")
-        @Json(name = "INSTALLED") INSTALLED("INSTALLED")
-        @Json(name = "ENABLED") ENABLED("ENABLED")
-        @Json(name = "DISABLED") DISABLED("DISABLED")
-        @Json(name = "ERROR") ERROR("ERROR")
-        @Json(name = "DELETED") DELETED("DELETED")
-        @Json(name = "UNAVAILABLE") UNAVAILABLE("UNAVAILABLE")
+        @Json(name = "AVAILABLE") AVAILABLE("AVAILABLE"),
+        @Json(name = "CONFIRMED") CONFIRMED("CONFIRMED"),
+        @Json(name = "ALLOCATED") ALLOCATED("ALLOCATED"),
+        @Json(name = "LINKED") LINKED("LINKED"),
+        @Json(name = "DOWNLOADED") DOWNLOADED("DOWNLOADED"),
+        @Json(name = "RELEASED") RELEASED("RELEASED"),
+        @Json(name = "INSTALLED") INSTALLED("INSTALLED"),
+        @Json(name = "ENABLED") ENABLED("ENABLED"),
+        @Json(name = "DISABLED") DISABLED("DISABLED"),
+        @Json(name = "ERROR") ERROR("ERROR"),
+        @Json(name = "DELETED") DELETED("DELETED"),
+        @Json(name = "UNAVAILABLE") UNAVAILABLE("UNAVAILABLE");
     }
 
 }
